@@ -8,14 +8,14 @@ function App() {
       title: 'Car Insurance',
       amount:50000,
       LocationOfExpenditure:20000,
-      date:new Date().toISOString()
+      date:new Date()
     },
     {
       id:2,
       title:'New phone',
       amount:20000,
       LocationOfExpenditure:10000,
-      date:new Date().toISOString()
+      date:new Date()
 
 
     }

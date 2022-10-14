@@ -1,13 +1,23 @@
 import React from 'react'
+import './ExpenseItem.css'
+const ExpenseItem = ({expenseName,expenseDate,expenseAmount,locationOfExpenditure}) => {
+    return (
+        <div>ExpenseItems
+          <div>
+           {expenseDate}
+          </div>
+          <div>
+         <h2>{expenseName}</h2>
+          <div>
+          {expenseAmount}
+          </div>
+          <div>
+           {locationOfExpenditure}
+          </div>
+          </div>
 
-const ExpenseItem = () => {
-  return (
-    <div>ExpenseItems
- <p>	Food Rs 10</p>
- <p>	Petrol Rs 100</p>
- <p>	Movies Rs 200</p>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default ExpenseItem

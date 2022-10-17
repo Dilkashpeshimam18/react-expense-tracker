@@ -1,4 +1,5 @@
 import React from "react";
+import ExpenseForm from "./components/Expense/ExpenseForm";
 import ExpenseItem from "./components/Expense/ExpenseItem";
 import Expenses from "./components/Expense/Expenses";
 
@@ -32,6 +33,7 @@ function App() {
           )
         })
       }
+      <ExpenseForm />
     </div>
   );
 }

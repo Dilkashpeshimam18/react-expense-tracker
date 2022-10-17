@@ -1,39 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const ExpenseForm = () => {
-    const submitExpense=(e)=>{
-        e.preventDefault();
-       let amount=document.getElementById('amount')     
-       let title=document.getElementById('title')        
-       let date=document.getElementById('date')      
-       if(amount.value !='' && title.value !='' && date.value !=null){
-        console.log(amount.value)
-        console.log(title.value)
-        console.log(date.value)
-
-       } else{
-        alert('enter the value first')
-       }
-   
+    const [title, setTitle] = useState('')
+    const [amount, setAmount] = useState('')
+    const [date, setDate] = useState(undefined)
+    const submitExpense = (e) => {
+        console.log(title)
+        console.log(amount)
+        console.log(date)
 
     }
-  return (
-    <div>
+    return (
         <div>
-            <h3>Add title</h3>
-            <input id='title' placeholder='Enter title' />
+            <div>
+                <h3>Add title</h3>
+                <input onChange={(e) => setTitle(e.target.value)} value={title} id='title' placeholder='Enter title' />
+            </div>
+            <div>
+                <h3>Add amount</h3>
+                <input onChange={(e) => setAmount(e.target.value)} value={amount} id='amount' type='number' placeholder='Enter amount' />
+            </div>
+            <div>
+                <h3>Add date</h3>
+                <input onChange={(e) => setDate(e.target.value)} value={date} id='date' placeholder='Enter title' type='date' />
+            </div>
+            <button onClick={submitExpense}>Submit</button>
         </div>
-        <div>
-            <h3>Add amount</h3>
-            <input id='amount' type='number' placeholder='Enter amount' />
-        </div>
-        <div>
-            <h3>Add date</h3>
-            <input id='date' placeholder='Enter title' type='date' />
-        </div>
-        <button onClick={submitExpense}>Submit</button>
-    </div>
-  )
+    )
 }
 
 export default ExpenseForm

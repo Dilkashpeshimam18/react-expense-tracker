@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import ExpenseForm from "./components/Expense/ExpenseForm";
 import ExpenseItem from "./components/Expense/ExpenseItem";
 import Expenses from "./components/Expense/Expenses";
-
+let expenseData={}
 function App() {
+ 
   const expenses = [
     {
       id: 1,
@@ -22,18 +23,39 @@ function App() {
 
     }
   ]
+  const onSubmitExpense=(data)=>{
+    expenseData={
+      ...data,
+      id:Math.random().toString()
+    }
+    console.log(expenseData)
+
+    {
+      Object.entries(expenseData).map(([key, val]) => 
+          console.log(val)
+      )
+  }
+  }
   console.log(expenses)
   return (
     <div className="App">
       {
         expenses.map((expense) => {
           return (
-            <Expenses expenseName={expense.title} expenseDate={expense.date} expenseAmount={expense.amount} locationOfExpenditure={expense.LocationOfExpenditure} />
+            <Expenses expenseData={expenseData} expenseName={expense.title} expenseDate={expense.date} expenseAmount={expense.amount} locationOfExpenditure={expense.LocationOfExpenditure} />
 
           )
         })
       }
-      <ExpenseForm />
+      <ExpenseForm onSubmitExpense={onSubmitExpense}/>
+      <div>
+      {
+      Object.entries(expenseData).map(([key, val]) => 
+          <h3>{val}</h3>
+      )
+  }
+
+      </div>
     </div>
   );
 }

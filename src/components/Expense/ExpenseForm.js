@@ -1,20 +1,27 @@
 import React, { useState } from 'react'
 
-const ExpenseForm = () => {
+const ExpenseForm = ({onSubmitExpense}) => {
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
     const [submit,setSubmit]=useState(false)
+    let expenseData={}
     const submitExpense = (e) => {
-        setSubmit(true)
-        console.log(title)
-        console.log(amount)
-        console.log(date)
+        e.preventDefault()
+         expenseData={
+            expenseTitle:title,
+            expenseAmount:amount,
+            expenseDate:date
+        }
+        onSubmitExpense(expenseData)
+        setAmount('')
+        setTitle('')
+        setDate('')
 
     }
     return (
         <div>
-            
+            <form onSubmit={submitExpense}>
             <div>
                 <h3>Add title</h3>
                 <input onChange={(e) => setTitle(e.target.value)} value={title} id='title' placeholder='Enter title' />
@@ -27,16 +34,9 @@ const ExpenseForm = () => {
                 <h3>Add date</h3>
                 <input onChange={(e) => setDate(e.target.value)} value={date} id='date' placeholder='Enter title' type='date' />
             </div>
-            <button onClick={submitExpense}>Submit</button>
-            {title && amount && date && submit==true &&
-            <div>
-                      <p>{title}</p>
-            <p>{amount}</p>
-            <p>{date}</p>
-                </div>
-     
-        
-            }
+            <button type='submit'>Submit</button>
+            </form>
+          
         </div>
     )
 }

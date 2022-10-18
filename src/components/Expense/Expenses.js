@@ -2,7 +2,7 @@ import React, {useState}from 'react'
 import ExpenseFilter from './ExpenseFilter'
 import ExpenseItem from './ExpenseItem'
 
-const Expenses = ({ expenseName, expenseDate, expenseAmount }) => {
+const Expenses = ({ expenses }) => {
   const [filterYear,setFilterYear]=useState('2020')
 
   const handleFilter=(selectedYear)=>{
@@ -12,7 +12,12 @@ const Expenses = ({ expenseName, expenseDate, expenseAmount }) => {
   return (
     <div>
       <ExpenseFilter handleFilter={handleFilter} filterYear={filterYear} />
-        <ExpenseItem  expenseName={expenseName} expenseDate={expenseDate} expenseAmount={expenseAmount}/>
+      {expenses.map((expense)=>{
+        return (
+          <ExpenseItem key={expense.id} expenseName={expense.title} expenseDate={expense.date} expenseAmount={expense}/>
+
+        )
+      })}
     </div>
   )
 }

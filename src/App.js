@@ -42,9 +42,8 @@ function App() {
       <h1>Expense Tracker</h1>
       <ExpenseForm onSubmitExpense={onSubmitExpense} />
       <div>
-        {allExpense.length == 0 ? <h2>There is no expense added</h2> : <Expenses setAllExpense={setAllExpense} allExpense={allExpense} />
-        }
-
+       <Expenses setAllExpense={setAllExpense} allExpense={allExpense} />
+   
 
       </div>
     </div>

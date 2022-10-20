@@ -33,14 +33,28 @@ const Expenses = ({ allExpense, setAllExpense }) => {
   return (
     <div>
       <ExpenseFilter handleFilter={handleFilter} filterYear={filterYear} />
-      {allExpense.map((expense) => {
+      {allExpense.length == 0 && <h2>There is no expense added</h2>}
+      {allExpense.length == 1 && allExpense.map((expense) => {
         return (
-
-          <ExpenseItem key={expense.id} expenseName={expense.title} expenseAmount={expense.amount} expenseDate={expense.date} />
+          <>
+            <ExpenseItem key={expense.id} expenseName={expense.title} expenseAmount={expense.amount} expenseDate={expense.date} />
+            <h3>There is only single expense</h3>
+          </>
 
 
         )
       })}
+      {
+        allExpense.length > 1 &&
+        allExpense.map((expense) => {
+          return (
+            <ExpenseItem key={expense.id} expenseName={expense.title} expenseAmount={expense.amount} expenseDate={expense.date} />
+
+
+
+          )
+        })}
+
     </div>
   )
 }

@@ -23,9 +23,15 @@ const expenses = [
 function App() {
 
   const [allExpense, setAllExpense] = useState([])
-  // useEffect(() => {
-  //   console.log(allExpense)
-  // }, [allExpense])
+  const [show, setShow] = useState(false)
+  const [hide,setHide]=useState(false)
+  const showForm = () => {
+    setShow(true)
+  }
+
+  const hideForm=()=>{
+setShow(false)
+  }
 
   const onSubmitExpense = (data) => {
     console.log('working')
@@ -40,12 +46,20 @@ function App() {
   return (
     <div className="App">
       <h1>Expense Tracker</h1>
-      <ExpenseForm onSubmitExpense={onSubmitExpense} />
-      <div>
-       <Expenses setAllExpense={setAllExpense} allExpense={allExpense} />
-   
+      {show == false ? (
+        <button onClick={showForm}>ADD EXPENSE</button>
 
-      </div>
+      ) : (
+        <div>
+          <ExpenseForm onSubmitExpense={onSubmitExpense} />
+          <button onClick={hideForm}>Cancel</button>
+
+          <Expenses setAllExpense={setAllExpense} allExpense={allExpense} />
+
+        </div>
+
+      )}
+
     </div>
   );
 }

@@ -8,10 +8,17 @@ const ExpenseForm = ({onSubmitExpense}) => {
     let expenseData={}
     const submitExpense = (e) => {
         e.preventDefault()
+        var input = document.getElementById( 'date-input' ).value;
+        var d = new Date( input );
+        var fullYear=d.getFullYear()
+    
          expenseData={
-            expenseTitle:title,
-            expenseAmount:amount,
-            expenseDate:date
+            title:title,
+           amount:amount,
+            date:d.toUTCString(),
+            id:Math.random().toString(),
+            year:fullYear
+
         }
         onSubmitExpense(expenseData)
         setAmount('')
@@ -32,7 +39,7 @@ const ExpenseForm = ({onSubmitExpense}) => {
             </div>
             <div>
                 <h3>Add date</h3>
-                <input onChange={(e) => setDate(e.target.value)} value={date} id='date' placeholder='Enter title' type='date' />
+                <input onChange={(e) => setDate(e.target.value)} value={date} id='date-input' placeholder='Enter title' type='date' />
             </div>
             <button type='submit'>Submit</button>
             </form>

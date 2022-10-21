@@ -6,7 +6,7 @@ import './ExpenseItem.css'
 const ExpenseItem = ({ id, expenseName, expenseDate, expenseAmount }) => {
 
   return (
-    <Card  className='expense-item'>
+    <Card className='expense-item'>
       <div className='expense-item__date'>
         <ExpenseDate date={expenseDate} />
       </div>

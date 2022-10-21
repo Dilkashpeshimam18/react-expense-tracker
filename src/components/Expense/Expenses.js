@@ -23,12 +23,7 @@ const Expenses = ({ allExpense, setAllExpense }) => {
     console.log(filterExpense)
   }
 
-  // useEffect(() => {
-  //   console.log(allExpense)
-  //   allExpense.forEach((exp) => {
-  //     console.log(exp.date)
-  //   })
-  // }, [allExpense])
+
 
   return (
     <div>

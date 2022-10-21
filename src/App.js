@@ -24,13 +24,13 @@ function App() {
 
   const [allExpense, setAllExpense] = useState([])
   const [show, setShow] = useState(false)
-  const [hide,setHide]=useState(false)
+  const [hide, setHide] = useState(false)
   const showForm = () => {
     setShow(true)
   }
 
-  const hideForm=()=>{
-setShow(false)
+  const hideForm = () => {
+    setShow(false)
   }
 
   const onSubmitExpense = (data) => {
@@ -42,6 +42,7 @@ setShow(false)
     setAllExpense((prevExpense) => {
       return [expense, ...prevExpense]
     })
+    console.log(expenseData)
   }
   return (
     <div className="App">

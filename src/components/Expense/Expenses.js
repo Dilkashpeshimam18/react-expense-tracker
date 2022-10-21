@@ -3,13 +3,13 @@ import ExpenseFilter from './ExpenseFilter'
 import ExpenseItem from './ExpenseItem'
 import ExpenseDetails from './ExpenseDetails'
 import ExpenseDate from './ExpenseDate'
+import ExpenseChart from './ExpenseChart'
 const Expenses = ({ allExpense, setAllExpense }) => {
   const [filterYear, setFilterYear] = useState('2020')
   const [filter, setFilter] = useState(allExpense)
 
   const handleFilter = (selectedYear) => {
     setFilterYear(selectedYear)
-    console.log(filterYear)
     setFilter(true)
 
     let filterExpense = allExpense.filter((expense) => {
@@ -28,6 +28,7 @@ const Expenses = ({ allExpense, setAllExpense }) => {
   return (
     <div>
       <ExpenseFilter handleFilter={handleFilter} filterYear={filterYear} />
+      <ExpenseChart expenses={allExpense} />
       {allExpense.length == 0 && <h2>There is no expense added</h2>}
       {allExpense.length == 1 && allExpense.map((expense) => {
         return (

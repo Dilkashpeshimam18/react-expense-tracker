@@ -11,13 +11,15 @@ const ExpenseForm = ({ onSubmitExpense }) => {
         var input = document.getElementById('date-input').value;
         var d = new Date(input);
         var fullYear = d.getFullYear()
+        const month = d.toLocaleString('default', { month: 'long' });
 
         expenseData = {
             title: title,
-            amount: amount,
+            amount: +amount,
             date: d.toUTCString(),
             id: Math.random().toString(),
-            year: fullYear
+            year: fullYear,
+            month:month,
 
         }
         onSubmitExpense(expenseData)
